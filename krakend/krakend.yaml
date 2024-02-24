@@ -1,0 +1,7 @@
+version: 2
+endpoints:
+  - endpoint: /lol
+    method: GET
+    backend:
+      - url_pattern: /
+        encoding: json
