@@ -21,7 +21,7 @@ services:
     container_name: krakend
     image: devopsfaith/krakend:2.5.1
     volumes:
-      - ./krakend/krakend.yaml:etc/krakend/krakend.yaml
+      - ./krakend/krakend.yaml:/etc/krakend/krakend.yaml
     ports:
       - "8080:8080"
     networks:
