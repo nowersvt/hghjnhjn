@@ -2,6 +2,9 @@ version: 3
 endpoints:
   - endpoint: /lol
     method: GET
-    extra_config:
-      github.com/devopsfaith/krakend-jsonschema-adapter:
-        template: "{ \"message\": \"Hello\" }"
+    output_encoding: json
+    output:
+      template: |
+        {
+          "message": "Hello"
+        }
