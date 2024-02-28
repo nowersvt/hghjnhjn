@@ -1,18 +1,9 @@
-{
-  "version": 3,
-  "endpoints": [
-    {
-      "endpoint": "/api/v1/test",
-      "method": "GET",
-      "output_encoding": "json",
-      "backend": [
-        {
-          "url_pattern": "/test",
-          "host": [
-            "http://jsonplaceholder.typicode.com"
-          ]
-        }
-      ]
-    }
-  ]
-}
+version: 3
+endpoints:
+  - endpoint: /api/v1/test
+    method: GET
+    output_encoding: json
+    backend:
+      - url_pattern: /test
+        host:
+          - http://jsonplaceholder.typicode.com
