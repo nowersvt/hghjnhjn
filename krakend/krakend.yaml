@@ -5,6 +5,6 @@ endpoints:
 - endpoint: "/swagger"
   method: GET
   backend:
-  - url_pattern: "/swagger/account.yaml"  # Путь к вашей swagger-спецификации
+  - url_pattern: "/"  
     host:
-    - http://192.168.0.1:1212
+    - http://192.168.0.1:8080
