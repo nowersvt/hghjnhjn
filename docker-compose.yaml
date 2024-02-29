@@ -29,7 +29,7 @@ services:
     volumes:
       - ./api/account.yaml:/api/account.yaml
     environment:
-      API_URL: /api/account.yaml
+      SWAGGER_JSON: /api/account.yaml
     networks:
       - backend
 
