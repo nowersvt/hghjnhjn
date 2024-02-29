@@ -27,9 +27,9 @@ services:
     ports:
       - "1212:8080"
     volumes:
-      - ./api/account.yaml:/usr/share/nginx/html/account.yaml
+      - ./api/account.yaml:/snigger/api/account.yaml
     environment:
-      SWAGGER_JSON: /account.yaml
+      SWAGGER_JSON: /snigger/api/account.yaml
     networks:
       - backend
 
