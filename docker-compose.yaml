@@ -26,7 +26,7 @@ services:
   
   swager:
     container_name: swager
-    image: swaggerapi/swagger-ui:5.11.8
+    image: swaggerapi/swagger-ui:v5.11.8
     ports:
       - "1212:1212"
     environment:
