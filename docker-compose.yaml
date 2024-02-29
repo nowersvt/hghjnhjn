@@ -21,11 +21,13 @@ services:
     volumes:
       - ./api/account.yaml:/app/api/krakend.yaml
       - krakend-config:/etc/krakend/
-    command: ["sh", "-c", "krakendesigner -i /app/openapi.yaml -o /etc/krakend/krakend.yaml"]
+    command: ["sh", "-c", "krakendesigner -i /api/account.yaml -o /etc/krakend/krakend.yaml"]
 
   krakend:
     container_name: krakend
     image: devopsfaith/krakend:2.5.1
+    depends_on:
+      - krakend-configuration
     ports:
       - "8080:8080"
     volumes:
