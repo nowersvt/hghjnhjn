@@ -1,50 +1,38 @@
-version: "3"
+version: '3'
+
 services:
-  postgrest:
-    image: postgrest/postgrest
+
+  nginx:
+    container_name: nginx
+    restart: unless-stopped
+    image: nginx:1.24.0-alpine-slim
     ports:
-      - 3000:3000
-    environment:
-      PGRST_DB_URI: postgres://app_user:password@postgres:5432/app_db
-      PGRST_DB_SCHEMA: public
-      PGRST_DB_ANON_ROLE: app_user
-    depends_on:
-      - postgres
-
-  postgres:
-    image: postgres
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+    networks:
+      - backend
+    
+  krakend:
+    container_name: krakend
+    image: devopsfaith/krakend:2.5.1
     ports:
-      - 5435:5432
-    environment:
-      POSTGRES_DB: app_db
-      POSTGRES_USER: app_user
-      POSTGRES_PASSWORD: password
-    volumes:
-      - "./pgdata:/var/lib/postgresql/data"
-
-  save-swagger:
-    image: busybox
-    depends_on:
-      - postgrest
-    volumes:
-      - swagger-json:./api/account.yaml
-    command: >
-      /bin/sh -c "sleep 15
-      && mkdir -p /spec
-      && wget -O /spec/swagger.json http://postgrest:3000"
-
-  swagger:
+      - "8080:8080"
+    networks:
+      - backend
+  
+  swager:
+    container_name: swagger
     image: swaggerapi/swagger-ui
-    expose:
-      - 8080
-    ports:
-      - 8029:8080
-    links:
-      - postgrest:postgrest
-    environment:
-      SWAGGER_JSON: ./api/account.yaml
+      - "1212:1212"
     volumes:
-      - swagger-json:/api
+      - ./api/account.yaml:/swagger.yaml:ro
+    environment:
+      SWAGGER_JSON: /swagger.yaml
+    networks:
+      - backend
 
-volumes:
-  swagger-json:
+networks:
+  backend:
+    driver: bridge
+
