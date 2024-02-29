@@ -27,9 +27,9 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./api/account.yaml:/swagger.yaml:ro
+      - ./api/account.yaml:/app/swagger.yaml:ro
     environment:
-      SWAGGER_JSON: /swagger.yaml
+      SWAGGER_JSON: /app/swagger.yaml
     networks:
       - backend
 
