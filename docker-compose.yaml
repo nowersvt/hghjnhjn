@@ -26,6 +26,10 @@ services:
     image: swaggerapi/swagger-ui
     ports:
       - "1212:8080"
+    volumes:
+      - ./api/account.yaml:/app/swagger.yaml:ro
+    environment:
+      SWAGGER_JSON: /app/swagger.yaml
     networks:
       - backend
 
