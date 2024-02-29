@@ -22,7 +22,7 @@ services:
       - backend
   
   swager:
-    image: swaggerapi/swagger-ui
+    image: swaggerapi/swagger-ui:latest
       - "1212:1212"
     volumes:
       - ./api/account.yaml:/swagger.yml:ro
