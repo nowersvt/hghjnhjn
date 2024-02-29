@@ -25,7 +25,7 @@ services:
     container_name: swagger
     image: swaggerapi/swagger-ui
     ports:
-      - "80:80"
+      - "1212:1212"
     volumes:
       - ./api/account.yaml:/app/swagger.yaml:ro
     environment:
