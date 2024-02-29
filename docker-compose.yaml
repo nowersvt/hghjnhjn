@@ -28,7 +28,7 @@ services:
     volumes:
       - ./api/account.yaml:/swagger.yml:ro
     environment:
-      API_URL: /swagger.yml
+       API_URL: /swagger.yml
     networks:
       - backend
 
