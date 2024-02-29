@@ -35,6 +35,8 @@ services:
       - ./api/account.yaml:/api/account.yaml:ro
     networks:
       - backend
+    depends_on:
+      - nginx
 
 networks:
   backend:
