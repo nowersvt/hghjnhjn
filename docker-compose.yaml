@@ -27,7 +27,7 @@ services:
     depends_on:
       - postgrest
     volumes:
-      - swagger-json:/spec
+      - swagger-json:./api/account.yaml
     command: >
       /bin/sh -c "sleep 15
       && mkdir -p /spec
@@ -42,7 +42,7 @@ services:
     links:
       - postgrest:postgrest
     environment:
-      SWAGGER_JSON: /spec/swagger.json
+      SWAGGER_JSON: ./api/account.yaml
     volumes:
       - swagger-json:/spec
 
