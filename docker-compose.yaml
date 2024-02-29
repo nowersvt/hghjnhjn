@@ -21,9 +21,10 @@ services:
     networks:
       - backend
   
-  swager:
+  swagger:
     container_name: swagger
     image: swaggerapi/swagger-ui
+    ports:
       - "1212:1212"
     volumes:
       - ./api/account.yaml:/swagger.yaml:ro
@@ -35,4 +36,3 @@ services:
 networks:
   backend:
     driver: bridge
-
