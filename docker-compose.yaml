@@ -16,17 +16,25 @@ services:
     networks:
       - backend
     
-  
+  krakend-configuration:
+    image: krakend/designer:2.4
+    volumes:
+      - ./api/account.yaml:/app/api/krakend.yaml
+      - krakend-config:/etc/krakend/
+    command: ["sh", "-c", "krakendesigner -i /app/openapi.yaml -o /etc/krakend/krakend.yaml"]
+
   krakend:
     container_name: krakend
     image: devopsfaith/krakend:2.5.1
-    volumes:
-      - ./api/account.yaml:/etc/krakend/krakend.yaml
     ports:
       - "8080:8080"
+    volumes:
+      - krakend-config:/etc/krakend/krakend.yaml
     networks:
       - backend
-    
+
+volumes:
+  krakend-config:    
 
 networks:
   backend:
