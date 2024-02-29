@@ -44,7 +44,7 @@ services:
     environment:
       SWAGGER_JSON: ./api/account.yaml
     volumes:
-      - swagger-json:/spec
+      - swagger-json:/api
 
 volumes:
   swagger-json:
