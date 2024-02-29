@@ -13,7 +13,6 @@ services:
     networks:
       - backend
     
-
   krakend:
     container_name: krakend
     image: devopsfaith/krakend:2.5.1
