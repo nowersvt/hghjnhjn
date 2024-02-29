@@ -1,10 +1,9 @@
 version: 3
-$schema: "https://www.krakend.io/schema/v2.5/krakend.json"
 
 endpoints:
-- endpoint: "/swagger"
-  method: GET
-  backend:
-  - url_pattern: "/"  
-    host:
-    - http://192.168.0.1:8080
+  - endpoint: "/swagger"
+    method: GET
+    output_encoding: json
+    backend:
+      - url_pattern: "/swagger"
+        host: ["http://swagger:8080"]
