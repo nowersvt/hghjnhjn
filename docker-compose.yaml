@@ -23,14 +23,12 @@ services:
       - backend
   
   swager:
-    container_name: swager
-    image: swaggerapi/swagger-ui:v5.11.8
-    ports:
+    image: swaggerapi/swagger-ui
       - "1212:1212"
     volumes:
       - ./api/account.yaml:/swagger.yml:ro
     environment:
-      SWAGGER_JSON: /swagger.yml
+      API_URL: /swagger.yml
     networks:
       - backend
 
