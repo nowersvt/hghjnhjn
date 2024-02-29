@@ -19,7 +19,7 @@ services:
     volumes:
       - ./krakend/krakend.yaml:/etc/krakend/krakend.yaml
     ports:
-      - "8080:8080"
+      - "3030:3030"
     networks:
       - backend
   
