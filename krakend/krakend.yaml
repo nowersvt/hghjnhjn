@@ -6,4 +6,9 @@ endpoints:
     output_encoding: json
     backend:
       - url_pattern: "/"
-        host: ["http://172.17.0.1:3030"]
+        extra_config:
+          github.com/devopsfaith/krakend-urlrewrite:
+            patterns:
+              - match: "/swagger(.*)"
+                replace: "${1}"
+                name: "swagger_rewrite"
