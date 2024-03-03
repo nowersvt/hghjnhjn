@@ -10,7 +10,8 @@
           "method":"POST",
           "host": [
             "http://16.16.115.110/"
-          ]
+          ],
+          "response_code": 200
         }
       ]
     },
