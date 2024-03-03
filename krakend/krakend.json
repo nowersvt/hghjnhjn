@@ -2,7 +2,7 @@
   "version": 3,
   "endpoints": [
     {
-      "endpoint": "/api/v1/signin",
+      "endpoint": "/api/v1",
       "method": "POST",
       "output_encoding": "no-op",
       "backend": [
