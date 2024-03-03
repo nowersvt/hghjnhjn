@@ -15,11 +15,11 @@ services:
     
   krakend:
     container_name: krakend
-    image: devopsfaith/krakend:2.5.1
+    image: devopsfaith/krakend:2.5
     volumes:
       - ./krakend/krakend.yaml:/etc/krakend/krakend.yaml
     ports:
-      - "3030:3030"
+      - "8090:8090"
     restart: unless-stopped 
     networks:
       - backend
