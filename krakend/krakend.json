@@ -9,7 +9,7 @@
           "url_pattern": "/signin",
           "method":"POST",
           "host": [
-            "http://swagger"
+            "http://nginx:80/"
           ]
         }
       ]
