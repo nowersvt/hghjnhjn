@@ -22,7 +22,7 @@
         {
           "url_pattern": "/signup",
           "host": [
-            "http://16.16.115.110:8080"
+            "http://16.16.115.110/"
           ]
         }
       ]
@@ -35,7 +35,7 @@
         {
           "url_pattern": "/confirm/{email_token}",
           "host": [
-            "http://16.16.115.110:8080"
+            "http://16.16.115.110/"
           ]
         }
       ]
@@ -48,7 +48,7 @@
         {
           "url_pattern": "/logout",
           "host": [
-            "http://16.16.115.110:8080"
+            "http://16.16.115.110/"
           ]
         }
       ]
@@ -61,7 +61,7 @@
         {
           "url_pattern": "/forgot_password",
           "host": [
-            "http://16.16.115.110:8080"
+            "http://16.16.115.110/"
           ]
         }
       ]
@@ -74,7 +74,7 @@
         {
           "url_pattern": "/receive_password/{email_reset_token}",
           "host": [
-            "http://16.16.115.110:8080"
+            "http://16.16.115.110/"
           ]
         }
       ]
