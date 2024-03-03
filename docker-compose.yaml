@@ -29,7 +29,7 @@ services:
     image: swaggerapi/swagger-ui
     restart: unless-stopped 
     ports:
-      - "8080:8080"
+      - "8001:8080"
     volumes:
       - ./api/account.yaml:/swagger/account.yaml
     environment:
