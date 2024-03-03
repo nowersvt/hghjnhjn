@@ -20,6 +20,7 @@ services:
       - ./krakend/krakend.json:/etc/krakend/krakend.json
     ports:
       - "1212:1212"
+    command: ["run","-d","-c", "/etc/krakend/krakend.json"]
     restart: unless-stopped 
     networks:
       - backend
