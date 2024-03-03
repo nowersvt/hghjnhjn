@@ -19,7 +19,7 @@ services:
     volumes:
       - ./krakend/krakend.yaml:/etc/krakend/krakend.yaml
     ports:
-      - "8090:8090"
+      - "1212:1212"
     restart: unless-stopped 
     networks:
       - backend
@@ -29,7 +29,7 @@ services:
     image: swaggerapi/swagger-ui
     restart: unless-stopped 
     ports:
-      - "8080:8001"
+      - "8080:8080"
     volumes:
       - ./api/account.yaml:/swagger/account.yaml
     environment:
