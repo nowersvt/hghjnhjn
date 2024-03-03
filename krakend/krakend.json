@@ -9,7 +9,7 @@
           "url_pattern": "/signin",
           "method":"POST",
           "host": [
-            "http://nginx:80/"
+            "http://16.16.115.110:80/"
           ]
         }
       ]
