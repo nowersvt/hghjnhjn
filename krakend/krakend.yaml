@@ -6,4 +6,4 @@ endpoints:
     output_encoding: json
     backend:
       - url_pattern: "/"
-        host: ["http://192.168.0.1:8080"]
+        host: ["http://172.17.0.1:8080"]
