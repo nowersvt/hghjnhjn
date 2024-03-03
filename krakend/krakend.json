@@ -2,14 +2,14 @@
   "version": 3,
   "endpoints": [
     {
-      "endpoint": "/api/v1",
+      "endpoint": "/api/v1/signin",
       "method": "POST",
-      "output_encoding": "no-op",
       "backend": [
         {
           "url_pattern": "/signin",
+          "method":"POST",
           "host": [
-            "http://16.16.115.110:8080"
+            "http://swagger"
           ]
         }
       ]
