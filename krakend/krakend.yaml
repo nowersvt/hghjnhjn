@@ -7,8 +7,9 @@ endpoints:
     backend:
       - url_pattern: "/"
         extra_config:
-          github.com/devopsfaith/krakend-urlrewrite:
+          github.com/devopsfaith/krakend-urlrewrite: # Плагин url-rewrite
             patterns:
-              - match: "/swagger(.*)"
-                replace: "${1}"
+              - match: "(/swagger)(.*)"
+                url_rewrite: "http://172.17.0.1:3030"
+                replace: "${2}"
                 name: "swagger_rewrite"
