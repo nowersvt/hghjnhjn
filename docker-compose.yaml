@@ -17,7 +17,7 @@ services:
     container_name: krakend
     image: devopsfaith/krakend:2.5
     volumes:
-      - ./krakend/krakend.yaml:/etc/krakend/krakend.yaml
+      - ./krakend/krakend.json:/etc/krakend/krakend.json
     ports:
       - "1212:1212"
     restart: unless-stopped 
