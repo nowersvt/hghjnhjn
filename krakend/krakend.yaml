@@ -1,15 +1,45 @@
 version: 3
 
 endpoints:
-  - endpoint: "/swagger"
-    method: GET
-    output_encoding: json
+  - endpoint: /api/v1/signin
+    method: POST
+    output_encoding: no-op
     backend:
-      - url_pattern: "/"
-        extra_config:
-          github.com/devopsfaith/krakend-urlrewrite: # Плагин url-rewrite
-            patterns:
-              - match: "(/swagger)(.*)"
-                url_rewrite: "http://172.17.0.1:3030"
-                replace: "${2}"
-                name: "swagger_rewrite"
+      - url_pattern: /signn
+        host:
+          - http://172.17.0.1:8080
+  - endpoint: /api/v1/signup
+    method: POST
+    output_encoding: no-op
+    backend:
+      - url_pattern: /signup
+        host:
+          - http://172.17.0.1:8080      
+  - endpoint: /api/v1/confirm/{email_token}
+    method: PUT
+    output_encoding: no-op
+    backend:
+      - url_pattern: /confirm/{email_token}
+        host:
+          - http://172.17.0.1:8080  
+  - endpoint: /api/v1/logout
+    method: DELETE
+    output_encoding: no-op
+    backend:
+      - url_pattern: /logout
+        host:
+          - http://172.17.0.1:8080
+  - endpoint: /api/v1/forgot_password
+    method: POST
+    output_encoding: no-op
+    backend:
+      - url_pattern: /forgot_password
+        host:
+          - http://172.17.0.1:8080
+  - endpoint: /api/v1/receive_password/{email_reset_token}
+    method: POST
+    output_encoding: no-op
+    backend:
+      - url_pattern: /receive_password/{email_reset_token}
+        host:
+          - http://172.17.0.1:8080
