@@ -1,0 +1,19 @@
+// Import
+@import 'reset.scss';
+@import 'vars.scss';
+
+// Fonts
+// @import url('');
+// font-family: '', sans-serif;
+
+body {
+    font-family: $fontFamily;
+    font-size: $fontSize;
+    color: $mainColor;
+}
+
+.container {
+    margin: 0 auto;
+    padding: $containerPadding;
+    max-width: $maxWidthContainer;
+}
