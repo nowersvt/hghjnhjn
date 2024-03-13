@@ -22,7 +22,7 @@ services:
     ports:
       - 8080:8080
     restart: unless-stopped
-    command: npm run dev
+    command: npm install vue --save-dev
     networks:
       - backend
 
