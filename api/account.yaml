@@ -1,0 +1,303 @@
+openapi: 3.0.1
+info:
+  title: Identity Provider API
+  description: Service for working with user account and sessions
+  version: 0.0.1
+servers:
+  - url: /api/v1
+paths:
+  /signin:
+    post:
+      tags:
+        - Session
+      operationId: signin
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SignInRequest'
+      responses:
+        '200':
+          description: success login
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SignInResponse'
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: internal error on the server
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: bad request to the server
+  
+  /signup:
+    post:
+      tags:
+        - Account
+      operationId: signup
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SignUpRequest'
+      responses:
+        '200':
+          description: successfully registered account
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: internal error on the server
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: bad request to the server
+      
+              
+  /confirm/{email_confirmation_token}:
+    put:
+      tags:
+        - Account
+      operationId: confirmEmail
+      parameters:
+        - in: path
+          name: email_confirmation_token
+          schema: 
+            type: string
+          required: true
+          description: token for identity email and confirm it 
+      responses:
+        '200':
+          description: successfully confirm email
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: internal error on the server
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: bad request to the server
+
+  /logout:
+    delete:
+      tags:
+        - Session
+      operationId: logout
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: successfully logout from account
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: internal error on the server
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: bad request to the server
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Access token is missing or invalid
+
+  /reset_password:
+   post:
+    tags:
+      - Account
+    operationId: reset_password
+    parameters:
+      - in: query
+        name: email
+        schema: 
+          type: string
+        required: true
+    responses:
+      '200':
+        description: successfully send reset password on target email
+      '500':
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Error'
+        description: internal error on the server
+      '400':
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Error'
+        description: bad request to the server
+    description: Reset password
+
+  /confirm_reset_password/{password_reset_token}:
+    post:
+      tags:
+        - Account
+      operationId: confirm_reset_password
+      parameters:
+        - in: path
+          name: password_reset_token
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReceivePasswordRequest'
+      responses:
+        '200':
+          description: successfully change password
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: internal error on the server
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: bad request to the server
+      description: redirect to page reset password
+
+  /confirm_new_password/{password_confirmation_token}:
+    put:
+      tags:
+        - Account 
+      operationId: confirm_new_password
+      parameters:
+        - in: path
+          name: password_confirmation_token
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewPasswordRequest'
+      responses:
+        '200':
+          description: Success confirm reset password
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: internal error on the server
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: bad request to the server
+      description: Confirm reset password for email
+  
+
+  /resend_reset_password/{email}:
+    post:
+      tags: 
+        - Account
+      operationId: resend_instruction
+      parameters:
+        - in: path
+          name: email
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success send instruction for reset password
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: internal error on the server
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: bad request to the server
+      description: Send instruction for reset password
+
+security:
+  - BearerAuth: []
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+  schemas:
+    ReceivePasswordRequest:
+      type: object
+      properties:
+        password:
+          type: string
+      
+    SignUpRequest:
+      type: object
+      properties:
+        login:
+          type: string
+        password:
+          type: string
+      description: create account request
+    
+    SignInResponse:
+      type: object
+      properties:
+        accessToken:
+          type: string
+      description: response to the client
+      
+    SignInRequest:
+      type: object
+      properties:
+        login:
+          type: string
+        password:
+          type: string
+      description: login in account request
+      
+    NewPasswordRequest:
+      type: object
+      properties:
+        password:
+          type: string
+      description: error from server.
+
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+        type:
+          type: string
+      description: error from server.

@@ -1,0 +1,109 @@
+{
+  "version": 3,
+  "endpoints": [
+    {
+      "endpoint": "/api/v1/signin",
+      "method": "POST",
+      "backend": [
+        {
+          "url_pattern": "/signin",
+          "method": "POST",
+          "host": [
+            "http://16.16.115.110/"
+          ]
+        }
+      ]
+    },
+    {
+      "endpoint": "/api/v1/signup",
+      "method": "POST",
+      "output_encoding": "no-op",
+      "backend": [
+        {
+          "url_pattern": "/signup",
+          "host": [
+            "http://16.16.115.110/"
+          ]
+        }
+      ]
+    },
+    {
+      "endpoint": "/api/v1/confirm/{email_token}",
+      "method": "PUT",
+      "output_encoding": "no-op",
+      "backend": [
+        {
+          "url_pattern": "/confirm/{email_token}",
+          "host": [
+            "http://16.16.115.110/"
+          ]
+        }
+      ]
+    },
+    {
+      "endpoint": "/api/v1/logout",
+      "method": "DELETE",
+      "output_encoding": "no-op",
+      "backend": [
+        {
+          "url_pattern": "/logout",
+          "host": [
+            "http://16.16.115.110/"
+          ]
+        }
+      ]
+    },
+    {
+      "endpoint": "/api/v1/reset_password",
+      "method": "POST",
+      "output_encoding": "no-op",
+      "backend": [
+        {
+          "url_pattern": "/reset_password",
+          "host": [
+            "http://16.16.115.110/"
+          ]
+        }
+      ]
+    },
+    {
+      "endpoint": "/api/v1/confirm_reset_password/{password_reset_token}",
+      "method": "POST",
+      "output_encoding": "no-op",
+      "backend": [
+        {
+          "url_pattern": "/confirm_reset_password/{password_reset_token}",
+          "host": [
+            "http://16.16.115.110/"
+          ]
+        }
+      ]
+    },
+    {
+      "endpoint": "/api/v1/confirm_new_password/{password_confirmation_token}",
+      "method": "PUT",
+      "output_encoding": "no-op",
+      "backend": [
+        {
+          "url_pattern": "/confirm_new_password/{password_confirmation_token}",
+          "host": [
+            "http://16.16.115.110/"
+          ]
+        }
+      ]
+    },
+    {
+      "endpoint": "/api/v1/resend_reset_password/{email}",
+      "method": "POST",
+      "output_encoding": "no-op",
+      "backend": [
+        {
+          "url_pattern": "/resend_reset_password/{email}",
+          "host": [
+            "http://16.16.115.110/"
+          ]
+        }
+      ]
+    }
+  ]
+}
