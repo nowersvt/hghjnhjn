@@ -4,15 +4,26 @@ services:
 
   nginx:
     container_name: nginx
-    restart: unless-stopped
     image: nginx:1.24.0-alpine-slim
     ports:
       - "80:80"
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+    restart: unless-stopped
     networks:
       - backend
-    
+  
+  frotend:
+    image: node:21  
+    container_name: vue_frotend
+    working_dir: /app
+    volumes:
+      - ./assessment-ui:/app
+    restart: unless-stopped
+    command: npm run serve
+    networks:
+      - backend
+
   krakend:
     container_name: krakend
     image: devopsfaith/krakend:2.5
