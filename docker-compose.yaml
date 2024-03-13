@@ -22,7 +22,7 @@ services:
     ports:
       - 8080:8080
     restart: unless-stopped
-    command: npm install vue --save-dev
+    command: npm install sass vite @vitejs/plugin-vue --save-dev && npm run dev
     networks:
       - backend
 
